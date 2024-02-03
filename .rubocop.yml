@@ -25,3 +25,6 @@ Style/FrozenStringLiteralComment:
 
 Style/PerlBackrefs:
   Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
