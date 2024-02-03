@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - "bin/**/*"
     - "config/**/*"
+    - "db/schema.rb"
     - "config.ru"
     - "Gemfile"
     - "Rakefile"
