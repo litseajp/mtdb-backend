@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - "bin/**/*"
     - "config/**/*"
+    - "db/schema.rb"
     - "config.ru"
     - "Gemfile"
     - "Rakefile"
@@ -20,4 +21,10 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Rails/OutputSafety:
   Enabled: false
