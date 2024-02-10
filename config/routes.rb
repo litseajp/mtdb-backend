@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :scales, only: [:index, :show], param: :scale
+
+  resources :chords, only: [:index]
 end
