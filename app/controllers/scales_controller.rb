@@ -92,10 +92,6 @@ class ScalesController < ApplicationController
     }
   end
 
-  def format_note(note)
-    note.length == 1 ? note.upcase : note.slice(0).upcase + SYMBOLS[note.slice(1..-1).to_sym]
-  end
-
   def format_description_for_show(description, tones)
     description = format_accidental(description)
     description = replace_tone_numbers_with_notes(description, tones)
