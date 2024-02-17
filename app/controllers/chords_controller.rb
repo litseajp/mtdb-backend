@@ -84,7 +84,7 @@ class ChordsController < ApplicationController
 
   def serialize_chord_for_show(chord, root, tones, positions)
     {
-      'name' => generate_chord_name(chord, root),
+      'name' => "#{generate_chord_name(chord, root)},#{format_note(root) + chord.name}コード",
       'description' => replace_related_chord_references_with_links(chord.description, root),
       'tones' => tones,
       'positions' => positions
@@ -94,11 +94,11 @@ class ChordsController < ApplicationController
   def generate_chord_name(chord, root)
     case chord.quality
     when 'Maj'
-      "#{format_note(root)}（#{format_note(root) + chord.name}）コード"
+      "#{format_note(root)}コード"
     when 'min'
-      "#{format_note(root)}m（#{format_note(root) + chord.name}）コード"
+      "#{format_note(root)}mコード"
     else
-      "#{format_note(root) + chord.quality}（#{format_note(root) + chord.name}）コード"
+      "#{format_note(root) + chord.quality}コード"
     end
   end
 
