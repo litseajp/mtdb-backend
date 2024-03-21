@@ -5,3 +5,7 @@ CHROMATIC_NOTES_SHARP = %w[c csharp d dsharp e f fsharp g gsharp a asharp b].fre
 CHROMATIC_NOTES_FLAT = %w[c dflat d eflat e f gflat g aflat a bflat b].freeze
 
 SYMBOLS = { sharp: '♯', flat: '♭', doublesharp: '♯♯', doubleflat: '♭♭' }.freeze
+
+MAJOR_KEYS = %w[c g d a e b fsharp dflat aflat eflat bflat f].freeze
+
+MINOR_KEYS = %w[a e b fsharp csharp gsharp dsharp bflat f c g d].freeze
