@@ -1,0 +1,2 @@
+class AvailableChordsController < ApplicationController
+end
