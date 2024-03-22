@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :chords, only: [:index, :show], param: :chord
 
-  resources :available_chords, only: [:index]
+  resources :available_chords, only: [:index, :show], param: :key
 end

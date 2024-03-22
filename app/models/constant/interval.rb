@@ -82,7 +82,11 @@ module Constant
     end
 
     def self.normalize_enharmonic_note(note)
-      if note.include?('flat')
+      if note.include?('doublesharp')
+        note[0] == 'b' ? 'csharp' : CHROMATIC_NOTES_SHARP[CHROMATIC_NOTES_SHARP.index(note[0]) + 2]
+      elsif note.include?('doubleflat')
+        note[0] == 'c' ? 'asharp' : CHROMATIC_NOTES_SHARP[CHROMATIC_NOTES_SHARP.index(note[0]) - 2]
+      elsif note.include?('flat')
         note[0] == 'c' ? 'b' : CHROMATIC_NOTES_SHARP[CHROMATIC_NOTES_SHARP.index(note[0]) - 1]
       elsif note == 'esharp'
         'f'
