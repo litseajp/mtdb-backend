@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_05_153449) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_21_104046) do
+  create_table "constant_available_chord_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "majmin", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "constant_available_chord_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "available_chord_category_id"
+    t.bigint "degree_id"
+    t.string "function", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["available_chord_category_id"], name: "idx_on_available_chord_category_id_7b8d0129f8"
+    t.index ["degree_id"], name: "index_constant_available_chord_groups_on_degree_id"
+  end
+
   create_table "constant_chord_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -42,10 +59,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_05_153449) do
     t.index ["chord_category_id"], name: "index_constant_chords_on_chord_category_id"
   end
 
+  create_table "constant_degrees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "interval_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interval_id"], name: "index_constant_degrees_on_interval_id"
+  end
+
   create_table "constant_intervals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "semitone_distance", null: false
     t.integer "alphabet_distance", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "constant_mid_available_chord_group_chords", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "available_chord_group_id"
+    t.bigint "chord_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["available_chord_group_id"], name: "idx_on_available_chord_group_id_c1ec01488e"
+    t.index ["chord_id"], name: "index_constant_mid_available_chord_group_chords_on_chord_id"
   end
 
   create_table "constant_mid_chord_intervals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -90,8 +126,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_05_153449) do
     t.index ["scale_category_id"], name: "index_constant_scales_on_scale_category_id"
   end
 
+  add_foreign_key "constant_available_chord_groups", "constant_available_chord_categories", column: "available_chord_category_id"
+  add_foreign_key "constant_available_chord_groups", "constant_degrees", column: "degree_id"
   add_foreign_key "constant_chord_positions", "constant_chords", column: "chord_id"
   add_foreign_key "constant_chords", "constant_chord_categories", column: "chord_category_id"
+  add_foreign_key "constant_degrees", "constant_intervals", column: "interval_id"
+  add_foreign_key "constant_mid_available_chord_group_chords", "constant_available_chord_groups", column: "available_chord_group_id"
+  add_foreign_key "constant_mid_available_chord_group_chords", "constant_chords", column: "chord_id"
   add_foreign_key "constant_mid_chord_intervals", "constant_chords", column: "chord_id"
   add_foreign_key "constant_mid_chord_intervals", "constant_intervals", column: "interval_id"
   add_foreign_key "constant_mid_scale_intervals", "constant_intervals", column: "interval_id"

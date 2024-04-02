@@ -22,7 +22,11 @@ Constant::Interval.create!(
     { id: 20, name: '11th', semitone_distance: 5, alphabet_distance: 3 },
     { id: 21, name: 'sharp11th', semitone_distance: 6, alphabet_distance: 3 },
     { id: 22, name: 'flat13th', semitone_distance: 8, alphabet_distance: 5 },
-    { id: 23, name: '13th', semitone_distance: 9, alphabet_distance: 5 }
+    { id: 23, name: '13th', semitone_distance: 9, alphabet_distance: 5 },
+    { id: 24, name: 'augmented1st', semitone_distance: 1, alphabet_distance: 0 },
+    { id: 25, name: 'augmented2nd', semitone_distance: 3, alphabet_distance: 1 },
+    { id: 26, name: 'augmented3rd', semitone_distance: 5, alphabet_distance: 2 },
+    { id: 27, name: 'augmented6th', semitone_distance: 10, alphabet_distance: 5 }
   ]
 )
 
@@ -492,5 +496,161 @@ end
         string6: position[5]
       }
     )
+  end
+end
+
+Constant::Degree.create!(
+  [
+    { id: 1, interval_id: 1, name: 'Ⅰ' },
+    { id: 2, interval_id: 24, name: '♯Ⅰ' },
+    { id: 3, interval_id: 2, name: '♭Ⅱ' },
+    { id: 4, interval_id: 3, name: 'Ⅱ' },
+    { id: 5, interval_id: 25, name: '♯Ⅱ' },
+    { id: 6, interval_id: 4, name: '♭Ⅲ' },
+    { id: 7, interval_id: 5, name: 'Ⅲ' },
+    { id: 8, interval_id: 26, name: '♯Ⅲ' },
+    { id: 9, interval_id: 6, name: '♭Ⅳ' },
+    { id: 10, interval_id: 7, name: 'Ⅳ' },
+    { id: 11, interval_id: 8, name: '♯Ⅳ' },
+    { id: 12, interval_id: 9, name: '♭Ⅴ' },
+    { id: 13, interval_id: 10, name: 'Ⅴ' },
+    { id: 14, interval_id: 11, name: '♯Ⅴ' },
+    { id: 15, interval_id: 12, name: '♭Ⅵ' },
+    { id: 16, interval_id: 13, name: 'Ⅵ' },
+    { id: 17, interval_id: 27, name: '♯Ⅵ' },
+    { id: 18, interval_id: 15, name: '♭Ⅶ' },
+    { id: 19, interval_id: 16, name: 'Ⅶ' }
+  ]
+)
+
+Constant::AvailableChordCategory.create!(
+  [
+    { id: 1, majmin: 'major', name: 'メジャースケール上のダイアトニックコード' },
+    { id: 2, majmin: 'major', name: 'サブドミナントマイナー' },
+    { id: 3, majmin: 'major', name: 'セカンダリードミナント' },
+    { id: 4, majmin: 'major', name: 'サブスティテュートドミナント' },
+    { id: 5, majmin: 'minor', name: 'ナチュラルマイナースケール上のダイアトニックコード' },
+    { id: 6, majmin: 'minor', name: 'ハーモニックマイナースケール上のダイアトニックコード' },
+    { id: 7, majmin: 'minor', name: 'メロディックマイナースケール上のダイアトニックコード' },
+    { id: 8, majmin: 'minor', name: 'セカンダリードミナント' },
+    { id: 9, majmin: 'minor', name: 'サブスティテュートドミナント' }
+  ]
+)
+
+Constant::AvailableChordGroup.create!(
+  [
+    { id: 1, available_chord_category_id: 1, degree_id: 1, function: 'トニック' },
+    { id: 2, available_chord_category_id: 1, degree_id: 4, function: 'サブドミナントの代理' },
+    { id: 3, available_chord_category_id: 1, degree_id: 7, function: 'トニックの代理' },
+    { id: 4, available_chord_category_id: 1, degree_id: 10, function: 'サブドミナント' },
+    { id: 5, available_chord_category_id: 1, degree_id: 13, function: 'ドミナント' },
+    { id: 6, available_chord_category_id: 1, degree_id: 16, function: 'トニックの代理' },
+    { id: 7, available_chord_category_id: 1, degree_id: 19, function: 'ドミナントの代理' },
+    { id: 8, available_chord_category_id: 2, degree_id: 10, function: 'サブドミナント' },
+    { id: 9, available_chord_category_id: 3, degree_id: 16, function: 'Ⅱmに対するドミナント' },
+    { id: 10, available_chord_category_id: 3, degree_id: 19, function: 'Ⅲmに対するドミナント' },
+    { id: 11, available_chord_category_id: 3, degree_id: 1, function: 'Ⅳに対するドミナント' },
+    { id: 12, available_chord_category_id: 3, degree_id: 4, function: 'Ⅴに対するドミナント' },
+    { id: 13, available_chord_category_id: 3, degree_id: 7, function: 'Ⅵに対するドミナント' },
+    { id: 14, available_chord_category_id: 4, degree_id: 3, function: 'ドミナントの代理' },
+    { id: 15, available_chord_category_id: 4, degree_id: 6, function: 'Ⅱmに対するドミナントの代理' },
+    { id: 16, available_chord_category_id: 4, degree_id: 10, function: 'Ⅲmに対するドミナントの代理' },
+    { id: 17, available_chord_category_id: 4, degree_id: 11, function: 'Ⅳに対するドミナントの代理' },
+    { id: 18, available_chord_category_id: 4, degree_id: 15, function: 'Ⅴに対するドミナントの代理' },
+    { id: 19, available_chord_category_id: 4, degree_id: 18, function: 'Ⅵに対するドミナントの代理' },
+    { id: 20, available_chord_category_id: 5, degree_id: 1, function: 'トニック' },
+    { id: 21, available_chord_category_id: 5, degree_id: 4, function: 'サブドミナントの代理' },
+    { id: 22, available_chord_category_id: 5, degree_id: 6, function: 'トニックの代理' },
+    { id: 23, available_chord_category_id: 5, degree_id: 10, function: 'サブドミナント' },
+    { id: 24, available_chord_category_id: 5, degree_id: 13, function: 'ドミナント' },
+    { id: 25, available_chord_category_id: 5, degree_id: 15, function: 'サブドミナントの代理' },
+    { id: 26, available_chord_category_id: 5, degree_id: 18, function: 'サブドミナントの代理' },
+    { id: 27, available_chord_category_id: 6, degree_id: 1, function: 'トニック' },
+    { id: 28, available_chord_category_id: 6, degree_id: 4, function: 'サブドミナントの代理' },
+    { id: 29, available_chord_category_id: 6, degree_id: 6, function: 'トニックの代理' },
+    { id: 30, available_chord_category_id: 6, degree_id: 10, function: 'サブドミナント' },
+    { id: 31, available_chord_category_id: 6, degree_id: 13, function: 'ドミナント' },
+    { id: 32, available_chord_category_id: 6, degree_id: 15, function: 'サブドミナントの代理' },
+    { id: 33, available_chord_category_id: 6, degree_id: 19, function: 'ドミナントの代理' },
+    { id: 34, available_chord_category_id: 7, degree_id: 1, function: 'トニック' },
+    { id: 35, available_chord_category_id: 7, degree_id: 4, function: 'サブドミナントの代理' },
+    { id: 36, available_chord_category_id: 7, degree_id: 6, function: 'トニックの代理' },
+    { id: 37, available_chord_category_id: 7, degree_id: 10, function: 'サブドミナント' },
+    { id: 38, available_chord_category_id: 7, degree_id: 13, function: 'ドミナント' },
+    { id: 39, available_chord_category_id: 7, degree_id: 16, function: 'トニックの代理' },
+    { id: 40, available_chord_category_id: 7, degree_id: 19, function: 'ドミナントの代理' },
+    { id: 41, available_chord_category_id: 8, degree_id: 16, function: 'Ⅱmに対するドミナント' },
+    { id: 42, available_chord_category_id: 8, degree_id: 18, function: '♭Ⅲに対するドミナント' },
+    { id: 43, available_chord_category_id: 8, degree_id: 1, function: 'Ⅳmに対するドミアント' },
+    { id: 44, available_chord_category_id: 8, degree_id: 4, function: 'Ⅴmに対するドミナント' },
+    { id: 45, available_chord_category_id: 8, degree_id: 6, function: '♭Ⅵに対するドミナント' },
+    { id: 46, available_chord_category_id: 8, degree_id: 10, function: '♭Ⅶに対するドミナント' },
+    { id: 47, available_chord_category_id: 9, degree_id: 3, function: 'ドミナントの代理' },
+    { id: 48, available_chord_category_id: 9, degree_id: 6, function: 'Ⅱmに対するドミナントの代理' },
+    { id: 49, available_chord_category_id: 9, degree_id: 7, function: '♭Ⅲに対するドミナントの代理' },
+    { id: 50, available_chord_category_id: 9, degree_id: 11, function: 'Ⅳmに対するドミナントの代理' },
+    { id: 51, available_chord_category_id: 9, degree_id: 15, function: 'Ⅴmに対するドミナントの代理' },
+    { id: 52, available_chord_category_id: 9, degree_id: 16, function: '♭Ⅵに対するドミナントの代理' },
+    { id: 53, available_chord_category_id: 9, degree_id: 19, function: '♭Ⅶに対するドミナントの代理' }
+  ]
+)
+
+[
+  { group_id: 1, chord_ids: [1, 15, 7] },
+  { group_id: 2, chord_ids: [2, 10] },
+  { group_id: 3, chord_ids: [2, 10] },
+  { group_id: 4, chord_ids: [1, 15, 7] },
+  { group_id: 5, chord_ids: [1, 8] },
+  { group_id: 6, chord_ids: [2, 10] },
+  { group_id: 7, chord_ids: [4, 13] },
+  { group_id: 8, chord_ids: [2, 16, 9, 10] },
+  { group_id: 9, chord_ids: [8] },
+  { group_id: 10, chord_ids: [8] },
+  { group_id: 11, chord_ids: [8] },
+  { group_id: 12, chord_ids: [8] },
+  { group_id: 13, chord_ids: [8] },
+  { group_id: 14, chord_ids: [8] },
+  { group_id: 15, chord_ids: [8] },
+  { group_id: 16, chord_ids: [8] },
+  { group_id: 17, chord_ids: [8] },
+  { group_id: 18, chord_ids: [8] },
+  { group_id: 19, chord_ids: [8] },
+  { group_id: 20, chord_ids: [2, 10] },
+  { group_id: 21, chord_ids: [4, 13] },
+  { group_id: 22, chord_ids: [1, 15, 7] },
+  { group_id: 23, chord_ids: [2, 16, 10] },
+  { group_id: 24, chord_ids: [2, 10] },
+  { group_id: 25, chord_ids: [1, 15, 7] },
+  { group_id: 26, chord_ids: [1, 8] },
+  { group_id: 27, chord_ids: [2, 9] },
+  { group_id: 28, chord_ids: [4, 13] },
+  { group_id: 29, chord_ids: [3, 11] },
+  { group_id: 30, chord_ids: [2, 16, 10] },
+  { group_id: 31, chord_ids: [1, 8] },
+  { group_id: 32, chord_ids: [1, 15, 7] },
+  { group_id: 33, chord_ids: [4, 14] },
+  { group_id: 34, chord_ids: [2, 16, 9] },
+  { group_id: 35, chord_ids: [2, 10] },
+  { group_id: 36, chord_ids: [3, 11] },
+  { group_id: 37, chord_ids: [1, 8] },
+  { group_id: 38, chord_ids: [1, 8] },
+  { group_id: 39, chord_ids: [4, 13] },
+  { group_id: 40, chord_ids: [4, 13] },
+  { group_id: 41, chord_ids: [8] },
+  { group_id: 42, chord_ids: [8] },
+  { group_id: 43, chord_ids: [8] },
+  { group_id: 44, chord_ids: [8] },
+  { group_id: 45, chord_ids: [8] },
+  { group_id: 46, chord_ids: [8] },
+  { group_id: 47, chord_ids: [8] },
+  { group_id: 48, chord_ids: [8] },
+  { group_id: 49, chord_ids: [8] },
+  { group_id: 50, chord_ids: [8] },
+  { group_id: 51, chord_ids: [8] },
+  { group_id: 52, chord_ids: [8] },
+  { group_id: 53, chord_ids: [8] }
+].each do |chords_hash|
+  chords_hash[:chord_ids].each do |chord_id|
+    Constant::MidAvailableChordGroupChord.create!({ available_chord_group_id: chords_hash[:group_id], chord_id: })
   end
 end
