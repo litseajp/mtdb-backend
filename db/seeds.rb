@@ -26,7 +26,7 @@ Constant::Interval.create!(
     { id: 24, name: 'augmented1st', semitone_distance: 1, alphabet_distance: 0 },
     { id: 25, name: 'augmented2nd', semitone_distance: 3, alphabet_distance: 1 },
     { id: 26, name: 'augmented3rd', semitone_distance: 5, alphabet_distance: 2 },
-    { id: 27, name: 'augmented6th', semitone_distance: 10, alphabet_distance: 5 },
+    { id: 27, name: 'augmented6th', semitone_distance: 10, alphabet_distance: 5 }
   ]
 )
 
@@ -533,7 +533,7 @@ Constant::AvailableChordCategory.create!(
     { id: 6, majmin: 'minor', name: 'ハーモニックマイナースケール上のダイアトニックコード' },
     { id: 7, majmin: 'minor', name: 'メロディックマイナースケール上のダイアトニックコード' },
     { id: 8, majmin: 'minor', name: 'セカンダリードミナント' },
-    { id: 9, majmin: 'minor', name: 'サブスティテュートドミナント' },
+    { id: 9, majmin: 'minor', name: 'サブスティテュートドミナント' }
   ]
 )
 
